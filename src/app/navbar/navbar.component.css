@@ -1,0 +1,38 @@
+.navbar-collapse a,
+.navbar-collapse a:focus {
+    font-family: var(--font-secondary);
+    font-size: 16px;
+    font-weight: 600;
+    color: #7f7f90;
+    transition: 0.3s;
+}
+
+.active-route {
+    color: #000 !important;
+    box-shadow: 0 3px var(--color-primary);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+a.btn.btn-admin,
+a.btn.btn-admin:focus {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    background: var(--color-primary);
+    padding: 8px 20px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+a.btn.btn-admin:hover,
+a.btn.btn-admin:focus:hover {
+    color: #fff;
+    background: #ec2727;
+}
+
+button.navbar-toggler,
+button.navbar-toggler:focus,
+button.navbar-toggler:hover {
+    border: 0;
+    box-shadow: none;
+}

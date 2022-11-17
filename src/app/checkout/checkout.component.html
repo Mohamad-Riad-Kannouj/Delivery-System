@@ -1,0 +1,170 @@
+<app-navbar></app-navbar>
+
+<section class="section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="row gy-3">
+      <div class="col-12 col-md-8" data-aos="fade-up">
+        <div class="address-form card px-4 py-3">
+          <form class="row" #contactForm="ngForm">
+            <div class="card-header d-flex align-items-center pb-3">
+              <p class="fw-bold mb-0 d-flex justify-content-center align-items-center ">
+                <span class="card-icon d-flex justify-content-center align-items-center">
+                  <i class="bi bi-geo-alt"></i>
+                </span>
+                Address
+              </p>
+            </div>
+            <div class="row card-body mt-0 pb-3 g-3">
+              <div class="col-md-6 mt-0">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" [(ngModel)]="firstName"
+                  required>
+              </div>
+              <div class="col-md-6 mt-3 mt-md-0">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" [(ngModel)]="lastName"
+                  required>
+              </div>
+              <div class="col-md-6">
+                <label for="phone" class="form-label">Phone</label>
+                <div class="input-group">
+                  <div class="input-group-text">+961</div>
+                  <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{8}" placeholder="71 234 567"
+                    [(ngModel)]="phone" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="zone" class="form-label">Zone</label>
+                <select id="zone" name="zone" class="form-select form-control" [(ngModel)]="zone" required>
+                  <option value="" selected disabled>Please choose an option</option>
+                  <option value="Akkar"> Akkar</option>
+                  <option value="Al-Batroun">Al-Batroun</option>
+                  <option value="Al-Bikaa">Al-Bikaa el gharbi</option>
+                  <option value="Al-Chouf">Al-Chouf</option>
+                  <option value="Al-Daniya">Al-Daniya</option>
+                  <option value="Al-Hermil">Al-Hermil</option>
+                  <option value="Al-Koura">Al-Koura</option>
+                  <option value="Al-Matn">Al-Matn</option>
+                  <option value="Al-Menya">Al-Menya</option>
+                  <option value="Al-Nabatiya">Al-Nabatiya</option>
+                  <option value="Alay">Alay</option>
+                  <option value="Baabda">Baabda</option>
+                  <option value="Baalbak">Baalbak</option>
+                  <option value="Bchari">Bchari</option>
+                  <option value="Beirut">Beirut</option>
+                  <option value="Bent">Bent Jbeil</option>
+                  <option value="Hasbaya">Hasbaya</option>
+                  <option value="Jbeil">Jbeil</option>
+                  <option value="Jezein">Jezein</option>
+                  <option value="Kesrwan">Kesrwan</option>
+                  <option value="Marjeyoun">Marjeyoun</option>
+                  <option value="Rachaya">Rachaya</option>
+                  <option value="Sayda">Sayda</option>
+                  <option value="Sour">Sour</option>
+                  <option value="Tripoli">Tripoli</option>
+                  <option value="Zahla">Zahla</option>
+                  <option value="Zgharta">Zgharta</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" [(ngModel)]="address"
+                  required>
+              </div>
+              <div class="col-12">
+                <label for="address_details" class="form-label">More Address Details</label>
+                <input type="text" class="form-control" id="address_details" name="address_details" placeholder="Apartment, studio, or floor"
+                  [(ngModel)]="address_details" required>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="payment-method card px-4 py-3 mt-3">
+          <div class="row">
+            <div class="card-header d-flex align-items-center pb-3">
+              <p class="fw-bold mb-0 d-flex justify-content-center align-items-center ">
+                <span class="card-icon d-flex justify-content-center align-items-center">
+                  <i class="bi bi-truck-front"></i>
+                </span>
+                Payment Method
+              </p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form-check py-3">
+              <input (change)="paymentMethod(true)" class="form-check-input" type="radio" name="flexRadioDefault"
+                id="flexRadioDefault1" checked>
+              <label class="form-check-label" for="flexRadioDefault1">
+                Cash On Delivery
+              </label>
+            </div>
+            <div class="form-check pb-3">
+              <input (change)="paymentMethod(false)" class="form-check-input" type="radio" name="flexRadioDefault"
+                id="flexRadioDefault2">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Credit Cart
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div [hidden]="cash" class="payment-card card px-4 py-3 mt-3">
+          <div class="row">
+            <div class="card-header d-flex align-items-center pb-3">
+              <p class="fw-bold mb-0 d-flex justify-content-center align-items-center ">
+                <span class="card-icon d-flex justify-content-center align-items-center">
+                  <i class="bi bi-credit-card"></i>
+                </span>
+                Credit or debit card
+              </p>
+            </div>
+          </div>
+          <div class="card-body py-5">
+            <form method="post" id="payment-form">
+              <div id="card-element"></div>
+
+              <div id="messages" role="alert" class="pt-3"></div>
+            </form>
+          </div>
+
+          <button [disabled]="!contactForm.form.valid || submitted" type="submit"
+            class="submit place-order-btn" (click)="createIntent()">Submit Payment</button>
+        </div>
+
+      </div>
+
+      <div class="col-12 col-md-4" data-aos="fade-up">
+        <div class="card px-4 py-3">
+          <div class="card-header pb-3">
+            <p class="fw-bold mb-0">Summary</p>
+          </div>
+          <div class="card-body">
+            <h5 class="text-uppercase">Order Total</h5>
+            <div class="d-flex justify-content-between">
+              <h6>Sub-Total</h6>
+              <h6>$ {{ subTotal | number: "1.0-2" }}</h6>
+            </div>
+            <div class="d-flex justify-content-between">
+              <h6>Delivery</h6>
+              <h6 *ngIf="subTotal === 0">$ 0</h6>
+              <h6 *ngIf="subTotal !== 0">$ 5</h6>
+            </div>
+            <hr class="my-4" />
+            <div class="d-flex justify-content-between">
+              <h6>Total</h6>
+              <h6 *ngIf="subTotal !== 0">$ {{ subTotal + 5 | number: "1.0-2" }}</h6>
+              <h6 *ngIf="subTotal === 0">$ {{ subTotal | number: "1.0-2" }}</h6>
+            </div>
+
+            <button [hidden]="!cash" [disabled]="!contactForm.form.valid" (click)="placeOrder(false)" type="button"
+              class="place-order-btn mt-4">PLACE YOUR ORDER</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

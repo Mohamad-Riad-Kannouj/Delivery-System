@@ -1,0 +1,51 @@
+section {
+    background-color: #eee;
+    min-height: 100vh;
+}
+
+.card {
+    overflow: hidden;
+    border: 3px solid #1f1f24;
+    border-radius: 25px;
+}
+
+.confirmation-message {
+    font-family: var(--font-primary);
+    font-size: 5rem;
+    font-weight: 400;
+    text-align: center
+}
+
+@media (max-width: 767px) {
+    .confirmation-message {
+        font-size: 3rem;
+    }
+}
+
+.col-md-4 {
+    background-color: #eae8e8;
+}
+
+.back-home-btn {
+    font-family: var(--font-secondary);
+    font-size: 25px;
+    color: #fff;
+    background: var(--color-primary);
+    padding: 8px 30px;
+    border-radius: 50px;
+    transition: 0.3s;
+    border-style: none;
+}
+
+.back-home-btn:hover {
+    background-color: rgba(206, 18, 18, 0.85);
+}
+
+.img-fluid {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    height: auto;
+    width: auto;
+}

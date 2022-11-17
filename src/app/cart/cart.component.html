@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+
+<section>
+  <div class="container" data-aos="fade-up">
+    <div class="card">
+      <div class="row">
+        <div class="col-12 col-md-8 px-4 py-3">
+          <div class="card-header d-flex justify-content-between align-items-center pb-3">
+            <p class="fw-bold mb-0">My Cart</p>
+            <p *ngIf="totalItems <= 1" class="mb-0 text-muted">{{ totalItems }} item</p>
+            <p *ngIf="totalItems > 1" class="mb-0 text-muted">{{ totalItems }} items</p>
+          </div>
+
+          <div class="card-body">
+            <div class="row d-flex justify-content-between align-items-center" *ngFor="let item of cart">
+              <div class="col-md-2 pb-4 pb-md-0">
+                <img src="assets/img/menu/{{item.img_URL}}" class="img-fluid rounded-3" alt="{{item.img_URL}}" />
+              </div>
+
+              <div class="col-md-4 pb-3 pb-md-0">
+                <h6 class="card-title"><b>{{ item.name }}</b></h6>
+                <p class="card-text">{{ item.description }}</p>
+              </div>
+
+              <div class="col-4 col-md-2">
+                <input id="form1" class="input" min="1" name="quantity" value="{{ item.quantity }}" type="number"
+                  class="form-control form-control-sm" [(ngModel)]="item.quantity" (change)="changeItemQty()" />
+              </div>
+
+              <div class="col-4 col-md-3 text-center">
+                <h6 class="mb-0">$ {{ item.price * item.quantity | number: "1.0-2" }}</h6>
+              </div>
+              <div class="col-4 col-md-1 text-center">
+                <a class="btn" (click)="deleteItem(item)"><i class="bi bi-trash-fill"></i></a>
+              </div>
+              <hr class="my-3" />
+
+            </div>
+          </div>
+
+          <div class="py-3">
+            <a routerLink="/restaurants" class="btn continue-shop-btn">Continue Shopping</a>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 px-4 py-3 bg-grey">
+          <div class="card-header pb-3">
+            <p class="fw-bold mb-0">Summary</p>
+          </div>
+          <div class="card-body">
+            <h5 class="text-uppercase">Order Total</h5>
+            <div class="d-flex justify-content-between">
+              <h6>Sub-Total</h6>
+              <h6>$ {{ subTotal | number: "1.0-2" }}</h6>
+            </div>
+            <div class="d-flex justify-content-between">
+              <h6>Delivery</h6>
+              <h6 *ngIf="subTotal !== 0">$ 5</h6>
+              <h6 *ngIf="subTotal === 0">$ 0</h6>
+            </div>
+            <hr class="my-4" />
+            <div class="d-flex justify-content-between mb-4">
+              <h6>Total</h6>
+              <h6 *ngIf="subTotal !== 0">$ {{ subTotal + 5 | number: "1.0-2" }}</h6>
+              <h6 *ngIf="subTotal === 0">$ {{ subTotal | number: "1.0-2" }}</h6>
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center">
+              <asl-google-signin-button *ngIf="!user"></asl-google-signin-button>
+              <span class="signIn" *ngIf="!user">Sign In To Continue</span>
+              <button *ngIf="user" type="button" class="checkout-btn" (click)="checkout()">CHECKOUT NOW</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+
+<section id="restaurants" class="restaurants section-bg">
+  <div class="section-header" data-aos="fade-up">
+    <h2>Restaurants</h2>
+    <p>Check Our <span>Restaurants</span></p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4 justify-content-center">
+      <div (click)="navToRestMenu(rest)" *ngFor="let rest of restaurants" class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+          <img class = "rest-Logo" src="{{rest.imgUrl}}">
+          <br>
+          <h4>{{rest.name}}</h4>
+          <p>
+            {{rest.description}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

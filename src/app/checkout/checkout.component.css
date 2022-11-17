@@ -1,0 +1,57 @@
+.card {
+    font-size: 1rem;
+    padding-left: .75em;
+    padding-right: .75em;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-header {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+}
+
+
+.card-icon {
+    margin-right: .75rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    font-size: 1.25rem;
+    width: 2.5rem;
+    background-color: #eee;
+}
+
+.card-header {
+    background-color: #fff;
+}
+
+.place-order-btn {
+    width: 100%;
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background: var(--color-primary);
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.place-order-btn:hover {
+    background-color: #ec2727;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+    border-left: 3px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+    border-left: 3px solid #a94442;
+}
+
+.ng-untouched[required],
+.ng-untouched.required {
+    border: 1px solid #ced4da;
+}
